@@ -46,8 +46,11 @@ function addAdmin() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    email = 'admin@example.com';
-                    password = '***REMOVED***';
+                    email = process.env.SEED_ADMIN_EMAIL;
+                    password = process.env.SEED_ADMIN_PASSWORD;
+                    if (!email || !password) {
+                        throw new Error('SEED_ADMIN_EMAIL ve SEED_ADMIN_PASSWORD ortam değişkenleri tanımlı olmalı.');
+                    }
                     saltRounds = 10;
                     _a.label = 1;
                 case 1:

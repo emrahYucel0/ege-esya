@@ -22,3 +22,9 @@ logs
 .env
 .env.*
 !.env.example
+
+# Yerel veritabanı dosyaları — hesap kaydı içerebilir, repoya girmez
+*.db
+*.sqlite
+*.sqlite3
+prisma/prisma/

@@ -5,8 +5,11 @@ import bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 async function seed() {
-  const email = 'admin@example.com';
-  const password = '***REMOVED***';
+  const email = process.env.SEED_ADMIN_EMAIL;
+  const password = process.env.SEED_ADMIN_PASSWORD;
+  if (!email || !password) {
+    throw new Error('SEED_ADMIN_EMAIL ve SEED_ADMIN_PASSWORD ortam değişkenleri tanımlı olmalı.');
+  }
   const saltRounds = 10;
 
   try {

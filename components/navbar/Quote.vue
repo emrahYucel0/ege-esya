@@ -36,7 +36,6 @@ const onSubmit = async (values, { resetForm }) => {
   try {
     const response = await mail.send({
       from: "info@demomailtrap.com",
-      to: '<REMOVED_EMAIL>',
       subject: 'Yeni Teklif Talebi',
       text: `
         İsim: ${values.name}

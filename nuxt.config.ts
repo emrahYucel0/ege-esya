@@ -24,23 +24,23 @@ export default defineNuxtConfig({
   runtimeConfig: {
     mail: {
       smtp: {
-        host: "live.smtp.mailtrap.io",
-        port: 587,
+        host: process.env.MAIL_HOST || "",
+        port: Number(process.env.MAIL_PORT || 587),
               // @ts-ignore: Bu özellik tipi tarafından tanınmıyor ama STARTTLS için gerekli.
-        secure: false,
+        secure: process.env.MAIL_SECURE === "true",
         auth: {
-          user: "***REMOVED***", // Kullanıcı adı düzeltildi
-          pass: "***REMOVED***",
+          user: process.env.MAIL_USER || "",
+          pass: process.env.MAIL_PASSWORD || "",
         },
 
       },
       message: {
-        from: "hello@demomailtrap.com",
-        to: "<REMOVED_EMAIL>",
+        from: process.env.MAIL_FROM || "",
+        to: process.env.MAIL_TO || "",
       },
     },
     public: {
-      mailFrom: "info@demomailtrap.com",
+      mailFrom: process.env.MAIL_FROM || "",
     },
   },
 
